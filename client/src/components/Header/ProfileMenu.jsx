@@ -1,5 +1,5 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
@@ -8,12 +8,20 @@ import "./styles.css";
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const navigate = useNavigate(); // Hook for navigation
   const open = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleNavigate = (path) => {
+    handleClose();
+    navigate(path); // Navigate to the specified route
   };
 
   return (
@@ -47,13 +55,13 @@ export default function BasicMenu() {
       >
         <MenuItem
           className="menu-items"
-          onClick={handleClose}
+          onClick={() => handleNavigate("/signup")}
         >
           Signup
         </MenuItem>
         <MenuItem
-          onClick={handleClose}
           className="menu-items"
+          onClick={() => handleNavigate("/login")}
         >
           Login
         </MenuItem>
@@ -65,20 +73,20 @@ export default function BasicMenu() {
           }}
         />
         <MenuItem
-          onClick={handleClose}
           className="menu-items"
+          onClick={handleClose}
         >
           RightStay Your Home
         </MenuItem>
         <MenuItem
-          onClick={handleClose}
           className="menu-items"
+          onClick={handleClose}
         >
           Host an experience
         </MenuItem>
         <MenuItem
-          onClick={handleClose}
           className="menu-items"
+          onClick={handleClose}
         >
           Help
         </MenuItem>

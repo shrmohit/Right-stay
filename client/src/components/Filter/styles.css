@@ -20,14 +20,14 @@
   justify-content: center;
   align-items: center;
   margin-right: 2rem;
-  opacity: 0.5;
+  opacity: 0.8;
   border-bottom: 1px solid var(--white);
   min-width: 85px;
 }
 
 .links-box:hover,
 .selected-box {
-  opacity: 1;
+  opacity: 1.5;
   border-bottom: 1px solid var(--black);
   transition: all 0.3s;
   cursor: pointer;
