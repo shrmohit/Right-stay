@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
@@ -19,11 +19,6 @@ export default function BasicMenu() {
     setAnchorEl(null);
   };
 
-  const handleNavigate = (path) => {
-    handleClose();
-    navigate(path); // Navigate to the specified route
-  };
-
   return (
     <div>
       <div
@@ -41,7 +36,6 @@ export default function BasicMenu() {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
@@ -55,13 +49,15 @@ export default function BasicMenu() {
       >
         <MenuItem
           className="menu-items"
-          onClick={() => handleNavigate("/signup")}
+          to="/signup"
+          component={Link}
         >
           Signup
         </MenuItem>
         <MenuItem
           className="menu-items"
-          onClick={() => handleNavigate("/login")}
+          to="/login"
+          component={Link}
         >
           Login
         </MenuItem>
@@ -74,22 +70,13 @@ export default function BasicMenu() {
         />
         <MenuItem
           className="menu-items"
-          onClick={handleClose}
+          to="/filter"
+          component={Link}
         >
           RightStay Your Home
         </MenuItem>
-        <MenuItem
-          className="menu-items"
-          onClick={handleClose}
-        >
-          Host an experience
-        </MenuItem>
-        <MenuItem
-          className="menu-items"
-          onClick={handleClose}
-        >
-          Help
-        </MenuItem>
+        <MenuItem className="menu-items">Host an experience</MenuItem>
+        <MenuItem className="menu-items">Help</MenuItem>
       </Menu>
     </div>
   );

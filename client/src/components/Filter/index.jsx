@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { links } from "../../assets/images-links";
 import "./styles.css";
+import { list, list2 } from "../../assets/card-list";
+import Cards from "../Cards";
 
 function Filter({ selectedFilter, setSelectedFilter }) {
   return (
@@ -29,6 +31,7 @@ function Filter({ selectedFilter, setSelectedFilter }) {
           </div>
         ))}
       </div>
+      {selectedFilter == 0 ? <Cards list={list} /> : <Cards list={list2} />}
     </>
   );
 }
